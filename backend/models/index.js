@@ -5,7 +5,7 @@ class Post {
   static async getAll() {
     const posts = await db.query(
       `
-        SELECT string 
+        SELECT id, string 
         FROM strings
       `
     );
@@ -18,7 +18,7 @@ class Post {
         INSERT INTO strings
           (string)
         VALUES ($1)
-        RETURNING string;
+        RETURNING id, string;
       `
       , [string]
     );
