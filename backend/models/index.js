@@ -5,23 +5,22 @@ class Post {
   static async getAll() {
     const posts = await db.query(
       `
-        SELECT name, string, created_at 
-        FROM posts
-        ORDER BY created_at DESC;
+        SELECT string 
+        FROM strings
       `
     );
     return posts.rows;
   }
 
-  static async create({name, string}) {
+  static async create({string}) {
     const posted = await db.query(
       `
-        INSERT INTO posts
-          (name, string)
-        VALUES ($1, $2)
-        RETURNING name, string, created_at;
+        INSERT INTO strings
+          (string)
+        VALUES ($1)
+        RETURNING string;
       `
-      , [name, string]
+      , [string]
     );
     return posted.rows[0];
   }

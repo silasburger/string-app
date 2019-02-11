@@ -4,7 +4,7 @@ CREATE DATABASE "strings-db";
 
 \c "strings-db"
 
-CREATE TABLE strings (string TEXT PRIMARY KEY);
+CREATE TABLE strings (id SERIAL PRIMARY KEY, string TEXT);
 
 INSERT INTO strings (string) VALUES
     ('😺 😸 😹 😻 😼 😽 🙀 😿 😾'),

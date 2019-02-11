@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const postRoutes = require('./routes');
+const stringRoutes = require('./routes');
 const cors = require('cors');
 const morgan = require('morgan');
 
@@ -8,7 +8,7 @@ app.use(morgan('tiny'));
 app.use(cors());
 
 app.use(express.json());
-app.use('/posts', postRoutes);
+app.use('/strings', stringRoutes);
 
 /** 404 handler */
 
