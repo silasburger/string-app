@@ -14,6 +14,7 @@ export const initialState = fromJS({
 });
 
 function stringPageReducer(state = initialState, action) {
+  console.log('reducer run');
   switch (action.type) {
     case FETCH_POSTS:
       console.log('in fetch posts reducer', action);

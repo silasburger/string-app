@@ -23,12 +23,12 @@ import messages from './messages';
 /* eslint-disable react/prefer-stateless-function */
 export class StringPage extends React.Component {
   componentDidMount() {
-    fetchPosts();
+    this.props.fetchPosts();
   }
 
   render() {
     console.log(this.props.posts);
-    const posts = [...this.props.posts];
+    const posts = { ...this.props.posts };
     console.log('posts', posts);
     return (
       <div>
@@ -44,6 +44,7 @@ export class StringPage extends React.Component {
 
 StringPage.propTypes = {
   posts: PropTypes.array,
+  fetchPosts: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -52,7 +53,7 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchPosts: () => dispatch(fetchPosts),
+    fetchPosts: () => dispatch(fetchPosts()),
   };
 }
 

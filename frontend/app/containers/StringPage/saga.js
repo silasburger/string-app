@@ -5,32 +5,30 @@ import {
   takeEvery,
   select,
   take,
+  all,
 } from 'redux-saga/effects';
-import { FETCH_POSTS, FETCH_POSTS_FAILED, POSTS_RECEIVED } from './constants';
-import BackendAPI from './BackendAPI';
+import { fetchPostsFailed, postsReceived } from './actions';
+import BackendAPI from '../../BackendAPI';
+import { FETCH_POSTS } from './constants';
 
 function* fetchPosts() {
   try {
-    // TODO: Call the API - this will get all posts
     const res = yield call(BackendAPI.getAllPosts);
-    const posts = res.data.posts;
+    const posts = [...res.data.posts];
+    console.log('fetchPosts', posts);
+
     // set result in action
-    yield put({ type: POSTS_RECEIVED, posts });
+    yield put(postsReceived(posts));
   } catch (e) {
-    yield put({ type: FETCH_POSTS_FAILED, e });
+    yield put(fetchPostsFailed(e));
   }
 }
 
-function* createPost(action) {
-  try {
-    const createdPost = yield call(BackendAPI.createPost, action.data);
-    yield put({ type: POST_CREATED, createdPost });
-  } catch (e) {
-    yield put({ type: CREATE_POST_FAILED, e });
-  }
+export function* watchFetchPosts() {
+  console.log('watch triggered');
+  yield takeLatest(FETCH_POSTS, fetchPosts);
 }
 
 export default function* stringPageSaga() {
-  yield takeEvery(CREATE_POST, createPost);
-  yield takeLatest(FETCH_POSTS, fetchPosts);
+  yield all([watchFetchPosts()]);
 }
