@@ -1,13 +1,13 @@
 const express = require('express');
 const router = new express.Router();
-const Post = require('../models');
+const StringModel = require('../models');
 
 /**
  * GET / => {posts: [{}]}
  */
 router.get('/', async function(req, res, next) {
   try {
-    const posts = await Post.getAll();
+    const posts = await StringModel.getAll();
     return res.json({posts});
   } catch (err) {
     return next(err);
@@ -19,8 +19,7 @@ router.get('/', async function(req, res, next) {
  */
 router.post('/', async function(req, res, next) {
   try {
-    console.log(req.body);
-    const posted = await Post.create(req.body);
+    const posted = await StringModel.create(req.body);
     return res.json({posted});
   } catch (err) {
     return next(err);
