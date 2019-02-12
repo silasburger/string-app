@@ -7,6 +7,7 @@ class Post {
       `
         SELECT id, string 
         FROM strings
+        ORDER BY id desc;
       `
     );
     return posts.rows;

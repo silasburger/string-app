@@ -24,6 +24,17 @@ export class StringForm extends React.Component {
     return (
       <div>
         <FormattedMessage {...messages.header} />
+        <form onSubmit={this.onSubmit}>
+          <label htmlFor="stringInput">String: </label>
+          <input
+            type="text"
+            value={this.props.stringInput}
+            id="stringInput"
+            name="stringInput"
+            onChange={this.handleStringChange}
+          />
+          <button type="submit">Submit</button>
+        </form>
       </div>
     );
   }

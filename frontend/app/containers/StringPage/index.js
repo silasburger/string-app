@@ -7,7 +7,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
@@ -29,14 +28,14 @@ export class StringPage extends React.Component {
 
   render() {
     console.log(this.props.posts);
-    const posts = { ...this.props.posts };
+    const posts = this.props.posts
+      .toJS()
+      .map(post => <div key={post.id}>{post.string}</div>);
     console.log('posts', posts);
     return (
       <div>
-        <Helmet>
-          <title>StringPage</title>
-          <meta name="description" content="Description of StringPage" />
-        </Helmet>
+        {posts.length ? posts : null}
+
         <FormattedMessage {...messages.header} />
       </div>
     );
@@ -44,8 +43,10 @@ export class StringPage extends React.Component {
 }
 
 StringPage.propTypes = {
-  posts: PropTypes.instanceOf(Immutable.List),
+  posts: PropTypes.instanceOf(Immutable.List), //TBD: maybe use one of and not use fromJS in reducer
   fetchPosts: PropTypes.func,
+  error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
+  loading: PropTypes.bool,
 };
 
 const mapStateToProps = createStructuredSelector({

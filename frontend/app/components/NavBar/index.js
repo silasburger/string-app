@@ -1,30 +1,30 @@
 /**
  *
- * FormPage
+ * NavBar
  *
  */
 
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 // import styled from 'styled-components';
 
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
-import StringForm from '../../containers/StringForm/Loadable';
 
 /* eslint-disable react/prefer-stateless-function */
-class FormPage extends React.Component {
+class NavBar extends React.Component {
   render() {
     return (
-      // use helmet on this page, probably
       <div>
-        <FormattedMessage {...messages.header} />
-        <StringForm />
+        {/* <FormattedMessage {...messages.header} /> */}
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/strings">Strings </NavLink>
       </div>
     );
   }
 }
 
-FormPage.propTypes = {};
+NavBar.propTypes = {};
 
-export default FormPage;
+export default NavBar;
