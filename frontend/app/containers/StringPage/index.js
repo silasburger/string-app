@@ -11,6 +11,7 @@ import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
+import Immutable from 'immutable';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
@@ -43,7 +44,7 @@ export class StringPage extends React.Component {
 }
 
 StringPage.propTypes = {
-  posts: PropTypes.array,
+  posts: PropTypes.instanceOf(Immutable.List),
   fetchPosts: PropTypes.func,
 };
 

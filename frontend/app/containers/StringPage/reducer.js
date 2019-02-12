@@ -23,7 +23,7 @@ function stringPageReducer(state = initialState, action) {
       return state
         .set('loading', false)
         .set('error', false)
-        .set('posts', action.posts);
+        .set('posts', fromJS(action.posts));
     case FETCH_POSTS_FAILED:
       return state.set('loading', false).set('error', action.error);
     default:
