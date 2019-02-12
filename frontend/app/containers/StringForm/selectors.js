@@ -11,7 +11,10 @@ const selectStringFormDomain = state => state.get('stringForm', initialState);
  * Other specific selectors
  */
 
-const selectStringValue = state => state.get('stringValue', '');
+const makeStringValueSelector = () =>
+  createSelector(selectStringFormDomain, stringFormState =>
+    stringFormState.get('stringInputValue'),
+  );
 
 /**
  * Default selector used by StringForm
@@ -21,6 +24,4 @@ const makeSelectStringForm = () =>
   createSelector(selectStringFormDomain, substate => substate.toJS());
 
 export default makeSelectStringForm;
-export { selectStringFormDomain, selectStringValue };
-
-
+export { selectStringFormDomain, makeStringValueSelector };

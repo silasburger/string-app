@@ -13,7 +13,7 @@ import {
 } from './constants';
 
 export const initialState = fromJS({
-  formValue: '',
+  stringInputValue: '',
   loading: false,
   error: false,
 });
@@ -21,7 +21,7 @@ export const initialState = fromJS({
 function stringFormReducer(state = initialState, action) {
   switch (action.type) {
     case CHANGE_STRING:
-      return state.set('changeString', action.value);
+      return state.set('stringInputValue', action.value);
     case CREATE_POST:
       return state.set('loading', true).set('error', false);
     case CREATE_POST_FAILED:

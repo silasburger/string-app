@@ -11,15 +11,14 @@ const selectStringPageDomain = state => state.get('stringPage', initialState);
  * Other specific selectors
  */
 
+const makePostsSelector = () =>
+  createSelector(selectStringPageDomain, substate => substate.get('posts'));
 /**
  * Default selector used by StringPage
  */
 
 const makeSelectStringPage = () =>
   createSelector(selectStringPageDomain, substate => substate.toJS());
-
-const makePostsSelector = () =>
-  createSelector(selectStringPageDomain, substate => substate.get('posts'));
 
 export default makeSelectStringPage;
 export { selectStringPageDomain, makePostsSelector };

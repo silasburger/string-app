@@ -13,7 +13,8 @@ import { compose } from 'redux';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import makeSelectStringForm from './selectors';
+import { makeStringValueSelector } from './selectors';
+import { changeString, createPost } from './actions';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
@@ -24,14 +25,14 @@ export class StringForm extends React.Component {
     return (
       <div>
         <FormattedMessage {...messages.header} />
-        <form onSubmit={this.onSubmit}>
+        <form onSubmit={this.props.onSubmit}>
           <label htmlFor="stringInput">String: </label>
           <input
             type="text"
-            value={this.props.stringInput}
+            value={this.props.stringValue}
             id="stringInput"
             name="stringInput"
-            onChange={this.handleStringChange}
+            onChange={this.props.changeString}
           />
           <button type="submit">Submit</button>
         </form>
@@ -41,16 +42,21 @@ export class StringForm extends React.Component {
 }
 
 StringForm.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  changeString: PropTypes.func,
+  stringInputValue: PropTypes.string,
 };
 
 const mapStateToProps = createStructuredSelector({
-  stringForm: makeSelectStringForm(),
+  stringInputValue: makeStringValueSelector(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    changeString: evt => dispatch(changeString(evt.target.value)),
+    onSubmit: evt => {
+      evt.preventDefault();
+      dispatch(createPost());
+    },
   };
 }
 

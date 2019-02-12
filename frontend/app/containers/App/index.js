@@ -25,7 +25,7 @@ export default function App() {
         <title>DMI Tech Screen</title>
         <meta name="DMI Tech Screen" content="An initial tech screen" />
         <noscript>Javascrirpt must be enabled for this site to work</noscript>
-      </Helmet>{' '}
+      </Helmet>
       <NavBar />
       <Switch>
         <Route exact path="/" component={FormPage} />
