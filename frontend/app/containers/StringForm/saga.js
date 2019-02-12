@@ -1,15 +1,18 @@
+import history from 'utils/history';
 import { put, call, takeEvery, select } from 'redux-saga/effects';
+import BackendAPI from 'utils/BackendAPI';
 import { makeStringValueSelector } from 'containers/StringForm/selectors';
 import { createPostFailed, postCreated } from './actions';
 import { CREATE_POST } from './constants';
-import BackendAPI from '../../BackendAPI';
 
 export function* createPost() {
-  const string = yield select(makeStringValueSelector);
+  const string = yield select(makeStringValueSelector());
   try {
-    const res = yield call(BackendAPI.createPost({ string }));
-    // if res is bad, throw error
+    yield call(BackendAPI.createPost, string);
     yield put(postCreated());
+
+    // calling push on main history entrance to navigate to strings page
+    yield call(history.push, '/strings');
   } catch (e) {
     yield put(createPostFailed(e));
   }

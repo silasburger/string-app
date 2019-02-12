@@ -43,6 +43,7 @@ export class StringForm extends React.Component {
 
 StringForm.propTypes = {
   changeString: PropTypes.func,
+  onSubmit: PropTypes.func,
   stringInputValue: PropTypes.string,
 };
 

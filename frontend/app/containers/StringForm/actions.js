@@ -17,10 +17,9 @@ export function changeString(value) {
     value,
   };
 }
-export function createPost(data) {
+export function createPost() {
   return {
     type: CREATE_POST,
-    data,
   };
 }
 export function createPostFailed(error) {

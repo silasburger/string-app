@@ -16,7 +16,7 @@ class FormPage extends React.Component {
     return (
       <div>
         <FormattedMessage {...messages.header} />
-        <StringForm />
+        <StringForm history={this.props.history} />
       </div>
     );
   }
