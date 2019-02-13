@@ -31,25 +31,34 @@ export class StringPage extends React.Component {
   }
 
   render() {
-    const posts = this.props.posts.map(post => (
-      <div key={post.id}>{post.string}</div>
-    ));
-    
-    const content = this.props.loading ? "Page Loading ..." : <div>
-    <FormattedMessage {...messages.header} />
-    {posts}
-  </div>;
+    const posts =
+      this.props.posts !== false
+        ? this.props.posts.map(post => <div key={post.id}>{post.string}</div>)
+        : null;
+
+    const content = this.props.loading ? (
+      'Page Loading ...'
+    ) : (
+      <div>
+        <FormattedMessage {...messages.header} />
+        {posts}
+      </div>
+    );
 
     return (
-      <Helmet>
+      <div>
+        <Helmet>
           <title>DMI Tech Screen</title>
           <meta
             name="Form Page"
             content="This page shows a form that can render a string!"
           />
+        </Helmet>
 
         {content}
+      </div>
     );
+  }
 }
 
 StringPage.propTypes = {
