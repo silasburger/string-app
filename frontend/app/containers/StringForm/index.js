@@ -13,11 +13,11 @@ import { compose } from 'redux';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import { makeStringValueSelector } from './selectors';
-import { changeString, createPost } from './actions';
-import reducer from './reducer';
-import saga from './saga';
-import messages from './messages';
+import { makeStringValueSelector } from 'containers/StringForm/selectors';
+import { changeString, createPost } from 'containers/StringForm/actions';
+import reducer from 'containers/StringForm/reducer';
+import saga from 'containers/StringForm/saga';
+import messages from 'containers/StringForm/messages';
 
 /* eslint-disable react/prefer-stateless-function */
 export class StringForm extends React.Component {

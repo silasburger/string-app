@@ -10,10 +10,10 @@ import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-import Immutable from 'immutable';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
+import { Helmet } from 'react-helmet';
 import {
   makePostsSelector,
   makeLoadingSelector,
@@ -31,24 +31,25 @@ export class StringPage extends React.Component {
   }
 
   render() {
-    console.log(this.props.loading, this.props.error, this.props.posts);
-    if (this.props.loading === true) {
-      return 'Page Loading ...';
-    }
+    const posts = this.props.posts.map(post => (
+      <div key={post.id}>{post.string}</div>
+    ));
+    
+    const content = this.props.loading ? "Page Loading ..." : <div>
+    <FormattedMessage {...messages.header} />
+    {posts}
+  </div>;
 
-    if (this.props.posts !== false) {
-      const posts = this.props.posts.map(post => (
-        <div key={post.id}>{post.string}</div>
-      ));
-      return (
-        <div>
-          <FormattedMessage {...messages.header} />
-          {posts}
-        </div>
-      );
-    }
-    return null;
-  }
+    return (
+      <Helmet>
+          <title>DMI Tech Screen</title>
+          <meta
+            name="Form Page"
+            content="This page shows a form that can render a string!"
+          />
+
+        {content}
+    );
 }
 
 StringPage.propTypes = {

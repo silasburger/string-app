@@ -19,7 +19,7 @@ class NavBar extends React.Component {
       <div>
         {/* <FormattedMessage {...messages.header} /> */}
         <NavLink to="/">Home</NavLink>
-        <NavLink to="/strings">Strings </NavLink>
+        <NavLink to="/strings">Strings</NavLink>
       </div>
     );
   }
