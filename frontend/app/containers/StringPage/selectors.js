@@ -13,6 +13,10 @@ const selectStringPageDomain = state => state.get('stringPage', initialState);
 
 const makePostsSelector = () =>
   createSelector(selectStringPageDomain, substate => substate.get('posts'));
+const makeLoadingSelector = () =>
+  createSelector(selectStringPageDomain, substate => substate.get('loading'));
+const makeErrorSelector = () =>
+  createSelector(selectStringPageDomain, substate => substate.get('error'));
 /**
  * Default selector used by StringPage
  */
@@ -21,4 +25,9 @@ const makeSelectStringPage = () =>
   createSelector(selectStringPageDomain, substate => substate.toJS());
 
 export default makeSelectStringPage;
-export { selectStringPageDomain, makePostsSelector };
+export {
+  selectStringPageDomain,
+  makePostsSelector,
+  makeErrorSelector,
+  makeLoadingSelector,
+};

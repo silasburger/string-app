@@ -14,7 +14,11 @@ import Immutable from 'immutable';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import { makePostsSelector } from './selectors';
+import {
+  makePostsSelector,
+  makeLoadingSelector,
+  makeErrorSelector,
+} from './selectors';
 import { fetchPosts } from './actions';
 import reducer from './reducer';
 import saga from './saga';
@@ -27,30 +31,37 @@ export class StringPage extends React.Component {
   }
 
   render() {
-    console.log(this.props.posts);
-    const posts = this.props.posts
-      .toJS()
-      .map(post => <div key={post.id}>{post.string}</div>);
-    console.log('posts', posts);
-    return (
-      <div>
-        {posts.length ? posts : null}
+    console.log(this.props.loading, this.props.error, this.props.posts);
+    if (this.props.loading === true) {
+      return 'Page Loading ...';
+    }
 
-        <FormattedMessage {...messages.header} />
-      </div>
-    );
+    if (this.props.posts !== false) {
+      const posts = this.props.posts.map(post => (
+        <div key={post.id}>{post.string}</div>
+      ));
+      return (
+        <div>
+          <FormattedMessage {...messages.header} />
+          {posts}
+        </div>
+      );
+    }
+    return null;
   }
 }
 
 StringPage.propTypes = {
-  posts: PropTypes.instanceOf(Immutable.List), //TBD: maybe use one of and not use fromJS in reducer
-  fetchPosts: PropTypes.func,
+  posts: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]), //TBD: maybe use one of and not use fromJS in reducer
   error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
+  fetchPosts: PropTypes.func,
   loading: PropTypes.bool,
 };
 
 const mapStateToProps = createStructuredSelector({
   posts: makePostsSelector(),
+  loading: makeLoadingSelector(),
+  error: makeErrorSelector(),
 });
 
 function mapDispatchToProps(dispatch) {
