@@ -5,7 +5,7 @@ import { initialState } from './reducer';
  * Direct selector to the stringForm state domain
  */
 
-const selectStringFormDomain = state => state.get('stringForm', initialState);
+const selectStringFormDomain = state => state.get('formData', initialState);
 
 /**
  * Other specific selectors

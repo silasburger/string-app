@@ -1,8 +1,8 @@
 import { put, call, takeLatest } from 'redux-saga/effects';
 // import request from 'utils/request';
 import BackendAPI from 'utils/BackendAPI';
-import { fetchPostsFailed, postsReceived } from './actions';
-import { FETCH_POSTS } from './constants';
+import { fetchPostsFailed, postsReceived } from 'containers/App/actions';
+import { FETCH_POSTS } from 'containers/App/constants';
 
 export function* fetchPosts() {
   try {

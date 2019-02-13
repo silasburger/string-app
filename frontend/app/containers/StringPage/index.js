@@ -12,15 +12,13 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
 import injectSaga from 'utils/injectSaga';
-import injectReducer from 'utils/injectReducer';
 import { Helmet } from 'react-helmet';
 import {
-  makePostsSelector,
-  makeLoadingSelector,
-  makeErrorSelector,
-} from './selectors';
-import { fetchPosts } from './actions';
-import reducer from './reducer';
+  makeSelectPosts,
+  makeSelectError,
+  makeSelectLoading,
+} from 'containers/App/selectors';
+import { fetchPosts } from 'containers/App/actions';
 import saga from './saga';
 import messages from './messages';
 
@@ -31,6 +29,7 @@ export class StringPage extends React.Component {
   }
 
   render() {
+    console.log('stringPage render', this.props.posts);
     const posts =
       this.props.posts !== false
         ? this.props.posts.map(post => <div key={post.id}>{post.string}</div>)
@@ -62,16 +61,16 @@ export class StringPage extends React.Component {
 }
 
 StringPage.propTypes = {
-  posts: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]), //TBD: maybe use one of and not use fromJS in reducer
+  posts: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
   error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
   fetchPosts: PropTypes.func,
   loading: PropTypes.bool,
 };
 
 const mapStateToProps = createStructuredSelector({
-  posts: makePostsSelector(),
-  loading: makeLoadingSelector(),
-  error: makeErrorSelector(),
+  posts: makeSelectPosts(),
+  loading: makeSelectLoading(),
+  error: makeSelectError(),
 });
 
 function mapDispatchToProps(dispatch) {
@@ -85,11 +84,9 @@ const withConnect = connect(
   mapDispatchToProps,
 );
 
-const withReducer = injectReducer({ key: 'stringPage', reducer });
 const withSaga = injectSaga({ key: 'stringPage', saga });
 
 export default compose(
-  withReducer,
   withSaga,
   withConnect,
 )(StringPage);

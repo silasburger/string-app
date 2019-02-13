@@ -14,11 +14,18 @@ const makeSelectLocation = () =>
   );
 
 const makeSelectLoading = () =>
-  createSelector(selectGlobal, globalState =>
-    globalState.get('loading').toJS(),
-  );
+  createSelector(selectGlobal, globalState => globalState.get('loading'));
+
+const makeSelectPosts = () =>
+  createSelector(selectGlobal, globalState => globalState.get('posts'));
 
 const makeSelectError = () =>
-  createSelector(selectGlobal, globalState => globalState.get('error').toJS());
+  createSelector(selectGlobal, globalState => globalState.get('error'));
 
-export { makeSelectLocation, makeSelectError, makeSelectLoading };
+export {
+  selectGlobal,
+  makeSelectLocation,
+  makeSelectError,
+  makeSelectLoading,
+  makeSelectPosts,
+};

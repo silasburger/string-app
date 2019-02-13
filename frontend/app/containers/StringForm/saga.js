@@ -9,14 +9,16 @@ import {
 } from 'redux-saga/effects';
 import BackendAPI from 'utils/BackendAPI';
 import { makeStringValueSelector } from 'containers/StringForm/selectors';
-import { createPostFailed, postCreated } from './actions';
-import { CREATE_POST, POST_CREATED } from './constants';
+import { createPostFailed, postCreated } from 'containers/App/actions';
+import { CREATE_POST, POST_CREATED } from 'containers/App/constants';
 
 /**
  * TODO come up with better name i.e. createPostLoader or createPostCall so that function isn't confused with action
  */
 export function* loadCreatePost() {
-  const string = yield select(makeStringValueSelector());
+  console.log('qwertypp');
+  const string = yield select(makeStringValueSelector()); //fix this line!@#!@##@!
+  console.log(string);
   try {
     yield call(BackendAPI.createPost, string);
     yield put(postCreated());
@@ -34,6 +36,7 @@ export function* pushToPosts() {
 }
 
 export function* watchCreatePost() {
+  console.log('watchcreatepost');
   yield takeEvery(CREATE_POST, loadCreatePost);
 }
 

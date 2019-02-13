@@ -12,7 +12,14 @@
 
 import { fromJS } from 'immutable';
 
-import { LOAD_REPOS_SUCCESS, LOAD_REPOS, LOAD_REPOS_ERROR } from './constants';
+import {
+  FETCH_POSTS,
+  POSTS_RECEIVED,
+  FETCH_POSTS_FAILED,
+  POST_CREATED,
+  CREATE_POST_FAILED,
+  CREATE_POST,
+} from './constants';
 
 // The initial state of the App
 const initialState = fromJS({
@@ -22,19 +29,25 @@ const initialState = fromJS({
 });
 
 function appReducer(state = initialState, action) {
+  console.log('reducer run', state.toJS());
   switch (action.type) {
-    case LOAD_REPOS:
+    case FETCH_POSTS:
+      console.log('fetch posts reducer', action);
+      return state.set('loading', true).set('error', false);
+    case POSTS_RECEIVED:
+      console.log('posts received', action);
       return state
-        .set('loading', true)
-        .set('error', false)
-        .setIn(['userData', 'repositories'], false);
-    case LOAD_REPOS_SUCCESS:
-      return state
-        .setIn(['userData', 'repositories'], action.repos)
         .set('loading', false)
-        .set('currentUser', action.username);
-    case LOAD_REPOS_ERROR:
-      return state.set('error', action.error).set('loading', false);
+        .set('error', false)
+        .set('posts', action.payload.posts);
+    case FETCH_POSTS_FAILED:
+      return state.set('loading', false).set('error', action.payload.error);
+    case CREATE_POST:
+      return state.set('loading', true).set('error', false);
+    case CREATE_POST_FAILED:
+      return state.set('loading', false).set('error', action.payload.error);
+    case POST_CREATED:
+      return state.set('loading', false).set('error', false);
     default:
       return state;
   }

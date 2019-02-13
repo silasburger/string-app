@@ -14,7 +14,8 @@ import { compose } from 'redux';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import { makeStringValueSelector } from 'containers/StringForm/selectors';
-import { changeString, createPost } from 'containers/StringForm/actions';
+import { changeString } from 'containers/StringForm/actions';
+import { createPost } from 'containers/App/actions';
 import reducer from 'containers/StringForm/reducer';
 import saga from 'containers/StringForm/saga';
 import messages from 'containers/StringForm/messages';
@@ -66,7 +67,7 @@ const withConnect = connect(
   mapDispatchToProps,
 );
 
-const withReducer = injectReducer({ key: 'stringForm', reducer });
+const withReducer = injectReducer({ key: 'formData', reducer });
 const withSaga = injectSaga({ key: 'stringForm', saga });
 
 export default compose(
