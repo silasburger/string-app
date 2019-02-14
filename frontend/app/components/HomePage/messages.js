@@ -11,6 +11,6 @@ export const scope = 'app.components.FormPage';
 export default defineMessages({
   header: {
     id: `${scope}.header`,
-    defaultMessage: 'This is the FormPage component!',
+    defaultMessage: 'Welcome to Strings R Us!',
   },
 });

@@ -12,14 +12,14 @@ import { Helmet } from 'react-helmet';
 import messages from './messages';
 
 /* eslint-disable react/prefer-stateless-function */
-class FormPage extends React.Component {
+class HomePage extends React.Component {
   render() {
     return (
       <div>
         <Helmet>
-          <title>DMI Tech Screen</title>
+          <title>Strings R Us</title>
           <meta
-            name="Form Page"
+            name="Strings R Us Homepage"
             content="This page shows a form that can render a string!"
           />
           <noscript>Javascrirpt must be enabled for this site to work</noscript>
@@ -31,4 +31,4 @@ class FormPage extends React.Component {
   }
 }
 
-export default FormPage;
+export default HomePage;

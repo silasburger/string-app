@@ -1,5 +1,5 @@
 const PORT = 8000;
-const DB_URI = 'strings-db';
+const DB_URI = process.env.NODE_ENV === 'test' ? 'strings-db-test ': 'strings-db';
 
 module.exports = {
   PORT,

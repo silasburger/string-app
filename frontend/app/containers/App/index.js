@@ -11,18 +11,18 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import StringPage from 'containers/StringPage/Loadable';
-import FormPage from 'components/FormPage';
+import HomePage from 'components/HomePage';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import NavBar from 'components/NavBar';
+import Header from 'components/Header';
 
 import GlobalStyle from 'global-styles';
 
 export default function App() {
   return (
     <div>
-      <NavBar />
+      <Header />
       <Switch>
-        <Route exact path="/" component={FormPage} />
+        <Route exact path="/" component={HomePage} />
         <Route exact path="/strings" component={StringPage} />
         <Route component={NotFoundPage} />
       </Switch>

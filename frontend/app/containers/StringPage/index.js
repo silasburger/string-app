@@ -29,7 +29,6 @@ export class StringPage extends React.Component {
   }
 
   render() {
-    console.log('stringPage render', this.props.posts);
     const posts =
       this.props.posts !== false
         ? this.props.posts.map(post => <div key={post.id}>{post.string}</div>)
