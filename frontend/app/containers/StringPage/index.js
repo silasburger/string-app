@@ -19,6 +19,7 @@ import {
   makeSelectLoading,
 } from 'containers/App/selectors';
 import { fetchPosts } from 'containers/App/actions';
+import PostList from 'components/PostList';
 import saga from './saga';
 import messages from './messages';
 
@@ -29,22 +30,17 @@ export class StringPage extends React.Component {
   }
 
   render() {
-    const posts =
-      this.props.posts !== false
-        ? this.props.posts.map(post => <div key={post.id}>{post.string}</div>)
-        : null;
-
-    const content = this.props.loading ? (
-      'Page Loading ...'
-    ) : (
-      <div>
-        <FormattedMessage {...messages.header} />
-        {posts}
-      </div>
-    );
+    // const content = this.props.loading ? (
+    //   'Page Loading ...'
+    // ) : (
+    //   <div>
+    //     <FormattedMessage {...messages.header} />
+    //     {posts}
+    //   </div>
+    // );
 
     return (
-      <div>
+      <div id="string-page">
         <Helmet>
           <title>DMI Tech Screen</title>
           <meta
@@ -53,7 +49,7 @@ export class StringPage extends React.Component {
           />
         </Helmet>
 
-        {content}
+        <PostList posts={this.props.posts} />
       </div>
     );
   }

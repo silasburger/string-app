@@ -2,7 +2,7 @@
 // import { mount } from 'enzyme';
 // import { enzymeFind } from 'styled-components/test-utils';
 
-// import { StringForm } from '../index';
+// import StringForm from '../index';
 
 describe('<StringForm />', () => {
   it('Expect to have unit tests specified', () => {

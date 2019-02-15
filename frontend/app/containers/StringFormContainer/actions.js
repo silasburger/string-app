@@ -1,6 +1,6 @@
 /*
  *
- * StringForm actions
+ * StringFormContainer actions
  *
  */
 

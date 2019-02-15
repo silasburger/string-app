@@ -1,6 +1,6 @@
 /**
  *
- * StringForm
+ * StringFormContainer
  *
  */
 
@@ -13,36 +13,28 @@ import { compose } from 'redux';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import { makeStringValueSelector } from 'containers/StringForm/selectors';
-import { changeString } from 'containers/StringForm/actions';
+import { makeStringValueSelector } from 'containers/StringFormContainer/selectors';
+import { changeString } from 'containers/StringFormContainer/actions';
 import { createPost } from 'containers/App/actions';
-import reducer from 'containers/StringForm/reducer';
-import saga from 'containers/StringForm/saga';
-import messages from 'containers/StringForm/messages';
+import reducer from 'containers/StringFormContainer/reducer';
+import saga from 'containers/StringFormContainer/saga';
+import messages from 'containers/StringFormContainer/messages';
+import StringForm from 'components/StringForm';
 
 /* eslint-disable react/prefer-stateless-function */
-export class StringForm extends React.Component {
+export class StringFormContainer extends React.Component {
   render() {
     return (
-      <div>
-        <FormattedMessage {...messages.header} />
-        <form onSubmit={this.props.onSubmit}>
-          <label htmlFor="stringInput">String: </label>
-          <input
-            type="text"
-            value={this.props.stringValue}
-            id="stringInput"
-            name="stringInput"
-            onChange={this.props.changeString}
-          />
-          <button type="submit">Submit</button>
-        </form>
-      </div>
+      <StringForm
+        changeString={this.props.changeString}
+        onSubmit={this.props.onSubmit}
+        stringInputValue={this.props.stringInputValue}
+      />
     );
   }
 }
 
-StringForm.propTypes = {
+StringFormContainer.propTypes = {
   changeString: PropTypes.func,
   onSubmit: PropTypes.func,
   stringInputValue: PropTypes.string,
@@ -57,7 +49,9 @@ function mapDispatchToProps(dispatch) {
     changeString: evt => dispatch(changeString(evt.target.value)),
     onSubmit: evt => {
       evt.preventDefault();
-      dispatch(createPost());
+      if (evt.target[0].value !== '') {
+        dispatch(createPost());
+      }
     },
   };
 }
@@ -68,10 +62,10 @@ const withConnect = connect(
 );
 
 const withReducer = injectReducer({ key: 'formData', reducer });
-const withSaga = injectSaga({ key: 'stringForm', saga });
+const withSaga = injectSaga({ key: 'stringFormContainer', saga });
 
 export default compose(
   withReducer,
   withSaga,
   withConnect,
-)(StringForm);
+)(StringFormContainer);

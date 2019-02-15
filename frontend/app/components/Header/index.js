@@ -13,7 +13,9 @@ class Header extends React.Component {
     return (
       <NavBar>
         {/* <FormattedMessage {...messages.header} /> */}
-        <HeaderLink to="/" exact>Home</HeaderLink>
+        <HeaderLink to="/" exact>
+          Home
+        </HeaderLink>
         <HeaderLink to="/strings">Strings</HeaderLink>
       </NavBar>
     );

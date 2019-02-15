@@ -5,5 +5,6 @@ export default styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 3rem;
+  min-height: 50px;
+  max-height: 50px;
 `;

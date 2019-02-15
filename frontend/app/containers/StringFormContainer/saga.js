@@ -8,7 +8,7 @@ import {
   all,
 } from 'redux-saga/effects';
 import BackendAPI from 'utils/BackendAPI';
-import { makeStringValueSelector } from 'containers/StringForm/selectors';
+import { makeStringValueSelector } from 'containers/StringFormContainer/selectors';
 import { createPostFailed, postCreated } from 'containers/App/actions';
 import { CREATE_POST, POST_CREATED } from 'containers/App/constants';
 
@@ -41,6 +41,6 @@ export function* watchPostCreated() {
   yield takeLatest(POST_CREATED, pushToPosts);
 }
 
-export default function* stringFormSaga() {
+export default function* stringFormContainerSaga() {
   yield all([watchCreatePost(), watchPostCreated()]);
 }

@@ -1,6 +1,6 @@
 /**
  *
- * Asynchronously loads the component for StringForm
+ * Asynchronously loads the component for StringFormContainer
  *
  */
 

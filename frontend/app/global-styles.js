@@ -17,14 +17,33 @@ const GlobalStyle = createGlobalStyle`
 
   #app {
     background-color: #fafafa;
-    min-height: 100%;
-    min-width: 100%;
+    height: 100%;
+    width: 100%;
   }
 
   p,
   label {
     font-family: Georgia, Times, 'Times New Roman', serif;
     line-height: 1.5em;
+  }
+
+  #homepage {
+    flex-grow: 1;
+    height: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  #app>div {
+    display: flex;
+    flex-direction: column;
+    background-color: blanchedalmond;
+    height: 100%;
+  }
+
+  #string-page {
   }
 `;
 
