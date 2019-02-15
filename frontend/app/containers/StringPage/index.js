@@ -42,10 +42,10 @@ export class StringPage extends React.Component {
     return (
       <div id="string-page">
         <Helmet>
-          <title>DMI Tech Screen</title>
+          <title>String Page</title>
           <meta
-            name="Form Page"
-            content="This page shows a form that can render a string!"
+            name="String Page"
+            content="This page shows all the strings!"
           />
         </Helmet>
 

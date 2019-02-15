@@ -38,7 +38,6 @@ describe('post /', () => {
       .send({
         string: 'Ok cool!'
       });
-    console.log(response.body);
     expect(response.body.posted).toEqual('Ok cool');
     let data = await client.query('select * from strings');
     expect(data.rows.length).toEqual(4);

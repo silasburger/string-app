@@ -13,7 +13,6 @@ export default class BackendAPI {
   }
 
   static getAllPosts() {
-    console.log('in getAllPosts');
     const res = request(`${BASE_URL}/strings`);
     return res;
   }

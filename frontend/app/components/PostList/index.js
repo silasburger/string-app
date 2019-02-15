@@ -22,7 +22,7 @@ class PostList extends React.Component {
             <PostListItem
               key={post.id}
               postString={post.string}
-              postTime={post.timestamp}
+              postTime={post.created_at}
             />
           ))
         : null;

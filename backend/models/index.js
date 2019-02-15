@@ -5,9 +5,9 @@ class Post {
   static async getAll() {
     const posts = await db.query(
       `
-        SELECT id, string 
+        SELECT id, string, created_at 
         FROM strings
-        ORDER BY id desc;
+        ORDER BY created_at desc;
       `
     );
     return posts.rows;

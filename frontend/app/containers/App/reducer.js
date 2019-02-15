@@ -29,13 +29,10 @@ const initialState = fromJS({
 });
 
 function appReducer(state = initialState, action) {
-  console.log('reducer run', state.toJS());
   switch (action.type) {
     case FETCH_POSTS:
-      console.log('fetch posts reducer', action);
       return state.set('loading', true).set('error', false);
     case POSTS_RECEIVED:
-      console.log('posts received', action);
       return state
         .set('loading', false)
         .set('error', false)

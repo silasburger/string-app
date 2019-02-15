@@ -14,10 +14,14 @@ const ListItem = styled.div`
   font-size: 20px;
   background-color: white;
   border-top: solid 2px grey;
+  position: relative;
 
-  &.time-stamp {
-    color: #ddd;
+  .time-stamp {
+    color: red;
     font-size: 10px;
+    position: absolute;
+    bottom: -25px;
+    right: 10px;
   }
 `;
 
