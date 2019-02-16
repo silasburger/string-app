@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 
 export default styled.div`
-  width: 50%;
-  border-left: solid 2px grey;
-  border-right: solid 2px grey;
-  border-bottom: solid 2px grey;
+  width: 70%;
+  max-width: 500px;
+  border: solid 2px #003366;
   margin: 0 auto;
+  height: 500px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 `;

@@ -42,9 +42,6 @@ const GlobalStyle = createGlobalStyle`
     background-color: blanchedalmond;
     height: 100%;
   }
-
-  #string-page {
-  }
 `;
 
 export default GlobalStyle;

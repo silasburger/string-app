@@ -12,14 +12,13 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
 import injectSaga from 'utils/injectSaga';
-import { Helmet } from 'react-helmet';
 import {
   makeSelectPosts,
   makeSelectError,
   makeSelectLoading,
 } from 'containers/App/selectors';
 import { fetchPosts } from 'containers/App/actions';
-import PostList from 'components/PostList';
+import StringPageView from 'components/StringPageView';
 import saga from './saga';
 import messages from './messages';
 
@@ -41,15 +40,9 @@ export class StringPage extends React.Component {
 
     return (
       <div id="string-page">
-        <Helmet>
-          <title>String Page</title>
-          <meta
-            name="String Page"
-            content="This page shows all the strings!"
-          />
-        </Helmet>
+      
 
-        <PostList posts={this.props.posts} />
+        <StringPageView posts={this.props.posts} />
       </div>
     );
   }
