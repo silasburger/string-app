@@ -31,8 +31,10 @@ const initialState = fromJS({
 function appReducer(state = initialState, action) {
   switch (action.type) {
     case FETCH_POSTS:
+      console.log('fetching posts');
       return state.set('loading', true).set('error', false);
     case POSTS_RECEIVED:
+      console.log('posts received');
       return state
         .set('loading', false)
         .set('error', false)
