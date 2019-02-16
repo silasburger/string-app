@@ -11,6 +11,7 @@ import { Helmet } from 'react-helmet';
 
 import PostList from 'components/PostList';
 import StringFormContainer from 'containers/StringFormContainer/Loadable';
+import TimeFilterForm from 'components/TimeFilterForm';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
@@ -31,6 +32,9 @@ class StringPageView extends React.Component {
           <meta name="String Page" content="This page shows all the strings!" />
         </Helmet>
         <FormattedMessage {...messages.header} />
+        <TimeFilterForm
+          changeDateTimeFilter={this.props.changeDateTimeFilter}
+        />
         <PostList posts={this.props.posts} />
         <StringFormContainer />
       </View>

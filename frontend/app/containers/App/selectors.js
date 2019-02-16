@@ -8,19 +8,21 @@ const selectRouter = state => state.get('router');
 
 const selectGlobal = state => state.get('global');
 
-const makeSelectLocation = () =>
-  createSelector(selectRouter, routerState =>
-    routerState.get('location').toJS(),
-  );
+const makeSelectLocation = createSelector(selectRouter, routerState =>
+  routerState.get('location').toJS(),
+);
 
-const makeSelectLoading = () =>
-  createSelector(selectGlobal, globalState => globalState.get('loading'));
+const makeSelectLoading = createSelector(selectGlobal, globalState =>
+  globalState.get('loading'),
+);
 
-const makeSelectPosts = () =>
-  createSelector(selectGlobal, globalState => globalState.get('posts'));
+const makeSelectPosts = createSelector(selectGlobal, globalState =>
+  globalState.get('posts'),
+);
 
-const makeSelectError = () =>
-  createSelector(selectGlobal, globalState => globalState.get('error'));
+const makeSelectError = createSelector(selectGlobal, globalState =>
+  globalState.get('error'),
+);
 
 export {
   selectGlobal,

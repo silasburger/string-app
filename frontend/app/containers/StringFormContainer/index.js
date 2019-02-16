@@ -41,7 +41,7 @@ StringFormContainer.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  stringInputValue: makeStringValueSelector(),
+  stringInputValue: makeStringValueSelector,
 });
 
 function mapDispatchToProps(dispatch) {

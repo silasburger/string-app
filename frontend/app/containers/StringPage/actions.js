@@ -4,10 +4,14 @@
  *
  */
 
-import { FETCH_POSTS, POSTS_RECEIVED, FETCH_POSTS_FAILED } from './constants';
+import {
+  FETCH_POSTS,
+  POSTS_RECEIVED,
+  FETCH_POSTS_FAILED,
+  CHANGE_DATE_TIME_FILTER,
+} from './constants';
 
 export function fetchPosts() {
-  console.log('in fetch posts action');
   return {
     type: FETCH_POSTS,
   };
@@ -22,5 +26,11 @@ export function postsReceived(posts) {
   return {
     type: POSTS_RECEIVED,
     posts,
+  };
+}
+export function changeDateTimeFilter(filter) {
+  return {
+    type: CHANGE_DATE_TIME_FILTER,
+    filter,
   };
 }

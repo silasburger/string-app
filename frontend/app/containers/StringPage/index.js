@@ -12,14 +12,14 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
 import injectSaga from 'utils/injectSaga';
-import {
-  makeSelectPosts,
-  makeSelectError,
-  makeSelectLoading,
-} from 'containers/App/selectors';
+import injectReducer from 'utils/injectReducer';
+import { makeSelectError, makeSelectLoading } from 'containers/App/selectors';
 import { fetchPosts } from 'containers/App/actions';
 import StringPageView from 'components/StringPageView';
+import { changeDateTimeFilter } from './actions';
 import saga from './saga';
+import { makeDateTimeFilteredPostsSelector } from './selectors';
+import reducer from './reducer';
 import messages from './messages';
 
 /* eslint-disable react/prefer-stateless-function */
@@ -38,11 +38,14 @@ export class StringPage extends React.Component {
     //   </div>
     // );
 
+    console.log('posts', this.props.posts);
+
     return (
       <div id="string-page">
-      
-
-        <StringPageView posts={this.props.posts} />
+        <StringPageView
+          changeDateTimeFilter={this.props.changeDateTimeFilter}
+          posts={this.props.posts}
+        />
       </div>
     );
   }
@@ -52,18 +55,22 @@ StringPage.propTypes = {
   posts: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
   error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
   fetchPosts: PropTypes.func,
+  changeDateTimeFilter: PropTypes.func,
   loading: PropTypes.bool,
 };
 
 const mapStateToProps = createStructuredSelector({
-  posts: makeSelectPosts(),
-  loading: makeSelectLoading(),
-  error: makeSelectError(),
+  posts: makeDateTimeFilteredPostsSelector,
+  loading: makeSelectLoading,
+  error: makeSelectError,
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     fetchPosts: () => dispatch(fetchPosts()),
+    changeDateTimeFilter: evt => {
+      dispatch(changeDateTimeFilter(evt.target.value));
+    },
   };
 }
 
@@ -72,9 +79,11 @@ const withConnect = connect(
   mapDispatchToProps,
 );
 
+const withReducer = injectReducer({ key: 'postFilters', reducer });
 const withSaga = injectSaga({ key: 'stringPage', saga });
 
 export default compose(
   withSaga,
+  withReducer,
   withConnect,
 )(StringPage);

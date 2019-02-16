@@ -6,7 +6,6 @@ import { FETCH_POSTS } from 'containers/App/constants';
 
 export function* fetchPosts() {
   try {
-    console.log('fetchposts saga');
     const res = yield call(BackendAPI.getAllPosts);
 
     // set result in action
