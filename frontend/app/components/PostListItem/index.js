@@ -37,7 +37,7 @@ class PostListItem extends React.Component {
     return (
       <ListItem>
         {this.props.postString}
-        <i className="time-stamp">{this.props.postTime}</i>
+        <i className="time-stamp">{this.props.postTime.toLocaleString()}</i>
       </ListItem>
     );
   }
@@ -45,7 +45,7 @@ class PostListItem extends React.Component {
 
 PostListItem.propTypes = {
   postString: PropTypes.string,
-  postTime: PropTypes.string,
+  postTime: PropTypes.instanceOf(Date),
 };
 
 export default PostListItem;
