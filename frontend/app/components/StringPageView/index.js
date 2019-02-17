@@ -11,13 +11,12 @@ import { Helmet } from 'react-helmet';
 
 import PostList from 'components/PostList';
 import StringFormContainer from 'containers/StringFormContainer/Loadable';
-// import TimeFilterForm from 'components/TimeFilterForm';
 
 const View = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: start;
   align-items: center;
   flex-direction: column;
 `;
@@ -32,9 +31,6 @@ class StringPageView extends React.Component {
           <meta name="String Page" content="This page shows all the strings!" />
         </Helmet>
         <StringFormContainer />
-        {/* <TimeFilterForm
-          changeDateTimeFilter={this.props.changeDateTimeFilter}
-        /> */}
         <PostList
           changeDateTimeFilter={this.props.changeDateTimeFilter}
           posts={this.props.posts}

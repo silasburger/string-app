@@ -4,7 +4,7 @@ export default styled.div`
   width: 70%;
   max-width: 775px;
   border: solid 2px #003366;
-  height: 300px;
+  height: 70%;
   overflow-y: scroll;
   overflow-x: hidden;
   }

@@ -9,6 +9,7 @@ export default styled.input`
   padding: 10px;
   background: #003366;
   color: white;
+  margin: 50px 0 50px 0;
 
   &:focus {
     outline: 0;

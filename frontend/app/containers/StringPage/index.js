@@ -7,7 +7,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
@@ -20,7 +19,6 @@ import { changeDateTimeFilter } from './actions';
 import saga from './saga';
 import { makeDateTimeFilteredPostsSelector } from './selectors';
 import reducer from './reducer';
-import messages from './messages';
 
 /* eslint-disable react/prefer-stateless-function */
 export class StringPage extends React.Component {

@@ -7,7 +7,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
@@ -19,7 +18,6 @@ import { changeString } from 'containers/StringFormContainer/actions';
 import { createPost } from 'containers/App/actions';
 import reducer from 'containers/StringFormContainer/reducer';
 import saga from 'containers/StringFormContainer/saga';
-import messages from 'containers/StringFormContainer/messages';
 import StringForm from 'components/StringForm';
 
 /* eslint-disable react/prefer-stateless-function */

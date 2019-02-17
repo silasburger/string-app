@@ -13,9 +13,6 @@ import LargeButton from './LargeButton';
 import SmallButton from './SmallButton';
 import Form from './Form';
 
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
-
 /* eslint-disable react/prefer-stateless-function */
 class StringForm extends React.Component {
   render() {

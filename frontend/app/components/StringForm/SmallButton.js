@@ -9,6 +9,7 @@ export default styled.button`
   border: solid 4px #003366;
   border-left: none;
   padding: 10px;
+  margin: 50px 0 50px 0;
 
   &:focus {
     outline: none;
