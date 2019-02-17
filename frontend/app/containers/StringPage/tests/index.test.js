@@ -2,7 +2,8 @@ import React from 'react';
 import { mount, shallow } from 'enzyme';
 
 import StringPageView from 'components/StringPageView/';
-import { fetchPosts, changeDateTimeFilter } from '../actions';
+import { fetchPosts } from 'containers/App/actions';
+import { changeDateTimeFilter } from '../actions';
 import { StringPage, mapDispatchToProps } from '../index';
 
 describe('<StringPage />', () => {

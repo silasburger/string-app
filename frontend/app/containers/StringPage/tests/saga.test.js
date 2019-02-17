@@ -40,9 +40,11 @@ describe('fetchPosts Saga', () => {
   });
 
   it('should dispatch the postsReceived action if it requests the data successfully', () => {
-    const posts = [{ string: 'onepost', created_at: '2019-02-16 19:10:25-07' }];
-    const putDescriptor = fetchPostsGenerator.next(posts).value;
-    expect(putDescriptor).toEqual(put(postsReceived(posts)));
+    const response = [
+      { string: 'onepost', created_at: '2019-02-16 19:10:25-07' },
+    ];
+    const putDescriptor = fetchPostsGenerator.next(response).value;
+    expect(putDescriptor).toEqual(put(postsReceived(response)));
   });
 
   it('should call the fetchPostsFailed action if the response errors', () => {

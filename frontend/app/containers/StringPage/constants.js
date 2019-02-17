@@ -4,9 +4,6 @@
  *
  */
 
-export const FETCH_POSTS = 'app/StringPage/FETCH_POSTS';
-export const POSTS_RECEIVED = 'app/StringPage/POSTS_RECEIVED';
-export const FETCH_POSTS_FAILED = 'app/StringPage/FETCH_POSTS_FAILED';
 export const CHANGE_DATE_TIME_FILTER = 'app/StringPage/CHANGE_DATE_TIME_FILTER';
 
 export const ALL_POSTS = 'ALL_POSTS';

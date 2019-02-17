@@ -11,8 +11,9 @@ describe('selectStringPageDomain', () => {
       dateTimeFilter: 'ALL_POSTS',
     });
     const mockedState = fromJS({
-      postFilter: dateTimeFilterState,
+      postFilters: dateTimeFilterState,
     });
+    console.log(selectStringPageDomain(mockedState));
     expect(selectStringPageDomain(mockedState)).toEqual(dateTimeFilterState);
   });
 });
