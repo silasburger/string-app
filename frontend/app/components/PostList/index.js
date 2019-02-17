@@ -26,6 +26,14 @@ class PostList extends React.Component {
           ))
         : null;
 
+    if (this.props.loading === true) {
+      return (
+        <ListWrapper>
+          <h1>Loading ...</h1>
+        </ListWrapper>
+      );
+    }
+
     return (
       <ListWrapper posts={this.props.posts}>
         <TimeFilterForm
@@ -42,6 +50,7 @@ PostList.propTypes = {
   changeDateTimeFilter: PropTypes.func,
   posts: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
   filter: PropTypes.string,
+  loading: PropTypes.bool,
 };
 
 export default PostList;

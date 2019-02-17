@@ -13,28 +13,35 @@ import { compose } from 'redux';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import { makeStringValueSelector } from 'containers/StringFormContainer/selectors';
-import { makeSelectLocation } from 'containers/App/selectors';
+import { makeSelectLocation, makeSelectError } from 'containers/App/selectors';
 import { changeString } from 'containers/StringFormContainer/actions';
 import { createPost } from 'containers/App/actions';
 import reducer from 'containers/StringFormContainer/reducer';
 import saga from 'containers/StringFormContainer/saga';
+import ErrorAlert from 'components/ErrorAlert';
 import StringForm from 'components/StringForm';
 
 /* eslint-disable react/prefer-stateless-function */
 export class StringFormContainer extends React.Component {
   render() {
     return (
-      <StringForm
-        locationPathname={this.props.location.pathname}
-        changeString={this.props.changeString}
-        onSubmit={this.props.onSubmit}
-        stringInputValue={this.props.stringInputValue}
-      />
+      <>
+        {this.props.error !== false && this.props.location.pathname === '/' ? (
+          <ErrorAlert error={this.props.error} />
+        ) : null}
+        <StringForm
+          locationPathname={this.props.location.pathname}
+          changeString={this.props.changeString}
+          onSubmit={this.props.onSubmit}
+          stringInputValue={this.props.stringInputValue}
+        />
+      </>
     );
   }
 }
 
 StringFormContainer.propTypes = {
+  error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
   changeString: PropTypes.func,
   onSubmit: PropTypes.func,
   stringInputValue: PropTypes.string,
@@ -44,6 +51,7 @@ StringFormContainer.propTypes = {
 const mapStateToProps = createStructuredSelector({
   stringInputValue: makeStringValueSelector,
   location: makeSelectLocation,
+  error: makeSelectError,
 });
 
 function mapDispatchToProps(dispatch) {

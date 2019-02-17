@@ -30,18 +30,11 @@ export class StringPage extends React.Component {
   }
 
   render() {
-    // const content = this.props.loading ? (
-    //   'Page Loading ...'
-    // ) : (
-    //   <div>
-    //     <FormattedMessage {...messages.header} />
-    //     {posts}
-    //   </div>
-    // );
-
     return (
       <div id="string-page">
         <StringPageView
+          error={this.props.error}
+          loading={this.props.loading}
           changeDateTimeFilter={this.props.changeDateTimeFilter}
           posts={this.props.posts}
           filter={this.props.filter}
@@ -54,9 +47,9 @@ export class StringPage extends React.Component {
 StringPage.propTypes = {
   posts: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
   error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
+  loading: PropTypes.bool,
   fetchPosts: PropTypes.func,
   changeDateTimeFilter: PropTypes.func,
-  loading: PropTypes.bool,
   filter: PropTypes.string,
 };
 

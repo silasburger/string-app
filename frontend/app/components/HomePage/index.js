@@ -18,9 +18,9 @@ class HomePage extends React.Component {
     return (
       <div id="homepage">
         <Helmet>
-          <title>Strings R Us</title>
+          <title>String Land</title>
           <meta
-            name="Strings R Us Homepage"
+            name="String Land Homepage"
             content="This page shows a form that can render a string!"
           />
           <noscript>Javascrirpt must be enabled for this site to work</noscript>

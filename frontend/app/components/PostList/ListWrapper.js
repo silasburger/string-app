@@ -8,5 +8,6 @@ export default styled.div`
   overflow-y: scroll;
   overflow-x: hidden;
 
-  background-color: ${({ posts }) => (posts.length === 0 ? 'goldenrod' : null)};
+  background-color: ${({ posts }) =>
+    posts === undefined || posts.length === 0 ? 'goldenrod' : null};
 `;

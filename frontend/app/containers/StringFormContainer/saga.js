@@ -26,7 +26,8 @@ export function* loadCreatePost() {
     yield call(BackendAPI.createPost, string);
     yield put(postCreated());
   } catch (e) {
-    yield put(createPostFailed(e));
+    const error = new Error('Failed to create post');
+    yield put(createPostFailed(error));
   }
 }
 

@@ -11,6 +11,7 @@ import { Helmet } from 'react-helmet';
 
 import PostList from 'components/PostList';
 import StringFormContainer from 'containers/StringFormContainer/Loadable';
+import ErrorAlert from 'components/ErrorAlert';
 
 const View = styled.div`
   width: 100%;
@@ -30,8 +31,12 @@ class StringPageView extends React.Component {
           <title>String Page</title>
           <meta name="String Page" content="This page shows all the strings!" />
         </Helmet>
+        {this.props.error !== false ? (
+          <ErrorAlert error={this.props.error} />
+        ) : null}
         <StringFormContainer />
         <PostList
+          loading={this.props.loading}
           changeDateTimeFilter={this.props.changeDateTimeFilter}
           posts={this.props.posts}
           filter={this.props.filter}
@@ -42,8 +47,10 @@ class StringPageView extends React.Component {
 }
 
 StringPageView.propTypes = {
+  error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
   posts: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
   changeDateTimeFilter: PropTypes.func,
+  loading: PropTypes.bool,
   filter: PropTypes.string,
 };
 

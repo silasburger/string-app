@@ -21,7 +21,7 @@ export function fetchPosts() {
 export function fetchPostsFailed(error) {
   return {
     type: FETCH_POSTS_FAILED,
-    payload: error,
+    payload: { error },
   };
 }
 export function postsReceived(posts) {
@@ -38,12 +38,12 @@ export function createPost() {
 export function createPostFailed(error) {
   return {
     type: CREATE_POST_FAILED,
-    payload: error,
+    payload: { error },
   };
 }
 export function postCreated(post) {
   return {
     type: POST_CREATED,
-    payload: post,
+    payload: { post },
   };
 }
