@@ -9,4 +9,6 @@ export default styled.div`
   border-radius: 5px;
   border: solid 2px #003366;
   box-shadow: -11px 11px 20px -13px rgba(0, 0, 0, 0.75);
+
+  background-color: ${props => (props.selected ? 'red' : '#41addd')};
 `;

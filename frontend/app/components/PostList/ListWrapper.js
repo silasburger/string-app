@@ -7,5 +7,6 @@ export default styled.div`
   height: 70%;
   overflow-y: scroll;
   overflow-x: hidden;
-  }
+
+  background-color: ${({ posts }) => (posts.length === 0 ? 'goldenrod' : null)};
 `;

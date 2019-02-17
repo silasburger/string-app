@@ -10,6 +10,7 @@ import Form from './Form';
 import Fieldset from './Fieldset';
 import FormGroup from './FormGroup';
 import Label from './Label';
+import RadioInput from './RadioInput';
 
 /* eslint-disable react/prefer-stateless-function */
 class TimeFilterForm extends React.Component {
@@ -17,8 +18,8 @@ class TimeFilterForm extends React.Component {
     return (
       <Form>
         <Fieldset id="timeFilter">
-          <FormGroup>
-            <input
+          <FormGroup selected={this.props.filter === 'ALL_POSTS'}>
+            <RadioInput
               onChange={this.props.changeDateTimeFilter}
               checked={this.props.filter === 'ALL_POSTS'}
               id="ALL_POSTS"
@@ -29,8 +30,8 @@ class TimeFilterForm extends React.Component {
             <Label htmlFor="ALL_POSTS">All Posts</Label>
           </FormGroup>
 
-          <FormGroup>
-            <input
+          <FormGroup selected={this.props.filter === 'LAST_FIVE_MINUTES'}>
+            <RadioInput
               onChange={this.props.changeDateTimeFilter}
               checked={this.props.filter === 'LAST_FIVE_MINUTES'}
               id="LAST_FIVE_MINUTES"
@@ -41,8 +42,8 @@ class TimeFilterForm extends React.Component {
             <Label htmlFor="LAST_FIVE_MINUTES">Last 5 Minutes</Label>
           </FormGroup>
 
-          <FormGroup>
-            <input
+          <FormGroup selected={this.props.filter === 'LAST_TWO_WEEKS'}>
+            <RadioInput
               onChange={this.props.changeDateTimeFilter}
               checked={this.props.filter === 'LAST_TWO_WEEKS'}
               id="LAST_TWO_WEEKS"
@@ -52,8 +53,8 @@ class TimeFilterForm extends React.Component {
             />
             <Label htmlFor="LAST_TWO_WEEKS">Last 2 Weeks</Label>
           </FormGroup>
-          <FormGroup>
-            <input
+          <FormGroup selected={this.props.filter === 'ONE_YEAR_OR_EARLIER'}>
+            <RadioInput
               onChange={this.props.changeDateTimeFilter}
               checked={this.props.filter === 'ONE_YEAR_OR_EARLIER'}
               id="ONE_YEAR_OR_EARLIER"
@@ -63,8 +64,8 @@ class TimeFilterForm extends React.Component {
             />
             <Label htmlFor="ONE_YEAR_OR_EARLIER">1 Year or Earlier</Label>
           </FormGroup>
-          <FormGroup>
-            <input
+          <FormGroup selected={this.props.filter === 'FIVE_YEARS_OR_EARLIER'}>
+            <RadioInput
               onChange={this.props.changeDateTimeFilter}
               checked={this.props.filter === 'FIVE_YEARS_OR_EARLIER'}
               id="FIVE_YEARS_OR_EARLIER"

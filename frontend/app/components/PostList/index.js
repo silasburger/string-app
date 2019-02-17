@@ -27,7 +27,7 @@ class PostList extends React.Component {
         : null;
 
     return (
-      <ListWrapper>
+      <ListWrapper posts={this.props.posts}>
         <TimeFilterForm
           changeDateTimeFilter={this.props.changeDateTimeFilter}
           filter={this.props.filter}
