@@ -3,11 +3,11 @@
  */
 
 /* eslint-disable redux-saga/yield-effects */
-import { takeLatest, call, put, select } from 'redux-saga/effects';
+import { takeLatest, call, put } from 'redux-saga/effects';
 import { FETCH_POSTS } from 'containers/App/constants';
-import stringPageSaga, { fetchPosts } from '../saga';
 import { fetchPostsFailed, postsReceived } from 'containers/App/actions';
-
+import BackendAPI from 'utils/BackendAPI';
+import stringPageSaga, { fetchPosts } from '../saga';
 
 // const generator = stringPageSaga();
 
@@ -16,7 +16,7 @@ describe('stringPageSaga Saga', () => {
 
   it('should start task to watch for FETCH_POSTS action', () => {
     const takeLatestDescriptor = stringPageGenerator.next().value;
-    expect(takeLatestDescriptor).toEqual(takeLatest(FETCH_POSTS, fetchPosts);
+    expect(takeLatestDescriptor).toEqual(takeLatest(FETCH_POSTS, fetchPosts));
   });
 });
 
@@ -29,16 +29,20 @@ describe('fetchPosts Saga', () => {
     fetchPostsGenerator = fetchPosts();
 
     const callDescriptor = fetchPostsGenerator.next().value;
+    expect(callDescriptor).toMatchSnapshot();
   });
 
   it('should call the api', () => {
-    expect(callDescriptor).toEqual(call(BackendAPI.getAllPosts));
+    const generator = fetchPosts();
+
+    const callDescr = generator.next().value;
+    expect(callDescr).toEqual(call(BackendAPI.getAllPosts));
   });
 
   it('should dispatch the postsReceived action if it requests the data successfully', () => {
     const posts = [{ string: 'onepost', created_at: '2019-02-16 19:10:25-07' }];
     const putDescriptor = fetchPostsGenerator.next(posts).value;
-    expect(putDescriptor).toEqual(put(postsReceived(res.posts)));
+    expect(putDescriptor).toEqual(put(postsReceived(posts)));
   });
 
   it('should call the fetchPostsFailed action if the response errors', () => {

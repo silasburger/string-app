@@ -60,7 +60,7 @@ const mapStateToProps = createStructuredSelector({
   error: makeSelectError,
 });
 
-function mapDispatchToProps(dispatch) {
+export function mapDispatchToProps(dispatch) {
   return {
     fetchPosts: () => dispatch(fetchPosts()),
     changeDateTimeFilter: evt => {

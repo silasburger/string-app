@@ -1,11 +1,31 @@
-// import React from 'react';
-// import { mount } from 'enzyme';
-// import { enzymeFind } from 'styled-components/test-utils';
-
-// import StringPageView from '../index';
+import React from 'react';
+import { shallow } from 'enzyme';
+import toJson from 'enzyme-to-json';
+import StringPageView from '../index';
 
 describe('<StringPageView />', () => {
-  it('Expect to have unit tests specified', () => {
-    expect(true).toEqual(false);
+  it('renders without crashing', () => {
+    shallow(
+      <StringPageView
+        loading={false}
+        error={false}
+        posts={[]}
+        filter="ALL_POSTS"
+        changeDateTimeFilter={() => {}}
+      />,
+    );
+  });
+  it('matches snapshot', () => {
+    const wrapper = shallow(
+      <StringPageView
+        loading={false}
+        error={false}
+        posts={[]}
+        filter="ALL_POSTS"
+        changeDateTimeFilter={() => {}}
+      />,
+    );
+    const serialized = toJson(wrapper);
+    expect(serialized).toMatchSnapshot();
   });
 });
