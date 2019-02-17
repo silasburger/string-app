@@ -11,9 +11,10 @@ import styled from 'styled-components';
 const ListItem = styled.div`
   line-height: 38px;
   padding: 10px;
+  margin: 11px;
   font-size: 20px;
   background-color: white;
-  border-top: solid 2px #003366;
+  border: solid 2px #003366;
   position: relative;
   box-sizing: border-box;
 
@@ -24,10 +25,6 @@ const ListItem = styled.div`
     bottom: 10px;
     right: 10px;
     height: 20px;
-  }
-
-  &:nth-child(1) {
-    border: none;
   }
 `;
 

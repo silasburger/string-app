@@ -22,7 +22,6 @@ import { makeSelectLocation } from '../App/selectors';
  */
 export function* loadCreatePost() {
   const string = yield select(makeStringValueSelector);
-  console.log('load create post saga', string);
   try {
     yield call(BackendAPI.createPost, string);
     yield put(postCreated());
@@ -37,7 +36,6 @@ export function* loadCreatePost() {
  */
 export function* postCreatedSideEffects() {
   const location = yield select(makeSelectLocation);
-  console.log('post created side effect', location);
   if (location.pathname === '/strings') {
     yield put(fetchPosts());
   } else {

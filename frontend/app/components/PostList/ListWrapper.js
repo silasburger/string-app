@@ -4,7 +4,8 @@ export default styled.div`
   width: 70%;
   max-width: 775px;
   border: solid 2px #003366;
-  height: 500px;
+  height: 300px;
   overflow-y: scroll;
   overflow-x: hidden;
+  }
 `;

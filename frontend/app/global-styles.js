@@ -26,6 +26,13 @@ const GlobalStyle = createGlobalStyle`
     font-family: Georgia, Times, 'Times New Roman', serif;
     line-height: 1.5em;
   }
+  
+  #app>div {
+    display: flex;
+    flex-direction: column;
+    background-color: blanchedalmond;
+    height: 100%;
+  }
 
   #homepage {
     flex-grow: 1;
@@ -36,12 +43,11 @@ const GlobalStyle = createGlobalStyle`
     flex-direction: column;
   }
 
-  #app>div {
-    display: flex;
-    flex-direction: column;
-    background-color: blanchedalmond;
+  #string-page {
     height: 100%;
+    display: flex;
   }
+
 `;
 
 export default GlobalStyle;

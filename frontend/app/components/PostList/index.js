@@ -8,9 +8,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 // import styled from 'styled-components';
 
-import { FormattedMessage } from 'react-intl';
 import PostListItem from 'components/PostListItem';
-import messages from './messages';
+import TimeFilterForm from 'components/TimeFilterForm';
 import ListWrapper from './ListWrapper';
 
 /* eslint-disable react/prefer-stateless-function */
@@ -29,15 +28,17 @@ class PostList extends React.Component {
 
     return (
       <ListWrapper>
-        {/* <FormattedMessage {...messages.header} /> */}
-        {stringItems}
+        <TimeFilterForm
+          changeDateTimeFilter={this.props.changeDateTimeFilter}
+        />
+        <div>{stringItems}</div>
       </ListWrapper>
     );
   }
 }
 
 PostList.propTypes = {
-  timeStampFilter: PropTypes.object,
+  changeDateTimeFilter: PropTypes.func,
   posts: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
 };
 

@@ -5,65 +5,74 @@
  */
 
 import React from 'react';
-// import PropTypes from 'prop-types';
-// import styled from 'styled-components';
-
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
-
+import PropTypes from 'prop-types';
+import Form from './Form';
+import Fieldset from './Fieldset';
+import FormGroup from './FormGroup';
+import Label from './Label';
 /* eslint-disable react/prefer-stateless-function */
 class TimeFilterForm extends React.Component {
   render() {
     return (
-      <form>
-        <FormattedMessage {...messages.header} />
-        <fieldset id="timeFilter" onChange={this.props.changeDateTimeFilter}>
-          <label htmlFor="All_POSTS">All Posts</label>
-          <input
-            defaultChecked
-            id="All_POSTS"
-            type="radio"
-            value="All_POSTS"
-            name="timeFilter"
-          />
+      <Form>
+        <Fieldset id="timeFilter" onChange={this.props.changeDateTimeFilter}>
+          <FormGroup>
+            <input
+              defaultChecked
+              id="All_POSTS"
+              type="radio"
+              value="All_POSTS"
+              name="timeFilter"
+            />
+            <Label htmlFor="All_POSTS">All Posts</Label>
+          </FormGroup>
 
-          <label htmlFor="LAST_FIVE_MINUTES">Last 5 Minutes</label>
-          <input
-            id="LAST_FIVE_MINUTES"
-            type="radio"
-            value="LAST_FIVE_MINUTES"
-            name="timeFilter"
-          />
+          <FormGroup>
+            <input
+              id="LAST_FIVE_MINUTES"
+              type="radio"
+              value="LAST_FIVE_MINUTES"
+              name="timeFilter"
+            />
+            <Label htmlFor="LAST_FIVE_MINUTES">Last 5 Minutes</Label>
+          </FormGroup>
 
-          <label htmlFor="LAST_TWO_WEEKS">Last 2 Weeks</label>
-          <input
-            id="LAST_TWO_WEEKS"
-            type="radio"
-            value="LAST_TWO_WEEKS"
-            name="timeFilter"
-          />
+          <FormGroup>
+            <input
+              id="LAST_TWO_WEEKS"
+              type="radio"
+              value="LAST_TWO_WEEKS"
+              name="timeFilter"
+            />
+            <Label htmlFor="LAST_TWO_WEEKS">Last 2 Weeks</Label>
+          </FormGroup>
+          <FormGroup>
+            <input
+              id="ONE_YEAR_OR_EARLIER"
+              type="radio"
+              value="ONE_YEAR_OR_EARLIER"
+              name="timeFilter"
+            />
+            <Label htmlFor="ONE_YEAR_OR_EARLIER">1 Year or Earlier</Label>
+          </FormGroup>
 
-          <label htmlFor="ONE_YEAR_OR_EARLIER">1 Year or Earlier</label>
-          <input
-            id="ONE_YEAR_OR_EARLIER"
-            type="radio"
-            value="ONE_YEAR_OR_EARLIER"
-            name="timeFilter"
-          />
-
-          <label htmlFor="FIVE_YEARS_OR_EARLIER">5 Years or Earlier</label>
-          <input
-            id="FIVE_YEARS_OR_EARLIER"
-            type="radio"
-            value="FIVE_YEARS_OR_EARLIER"
-            name="timeFilter"
-          />
-        </fieldset>
-      </form>
+          <FormGroup>
+            <input
+              id="FIVE_YEARS_OR_EARLIER"
+              type="radio"
+              value="FIVE_YEARS_OR_EARLIER"
+              name="timeFilter"
+            />
+            <Label htmlFor="FIVE_YEARS_OR_EARLIER">5 Years or Earlier</Label>
+          </FormGroup>
+        </Fieldset>
+      </Form>
     );
   }
 }
 
-TimeFilterForm.propTypes = {};
+TimeFilterForm.propTypes = {
+  changeDateTimeFilter: PropTypes.func,
+};
 
 export default TimeFilterForm;

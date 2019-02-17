@@ -38,8 +38,6 @@ export class StringPage extends React.Component {
     //   </div>
     // );
 
-    console.log('posts', this.props.posts);
-
     return (
       <div id="string-page">
         <StringPageView

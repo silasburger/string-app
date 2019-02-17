@@ -14,6 +14,7 @@ import { compose } from 'redux';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import { makeStringValueSelector } from 'containers/StringFormContainer/selectors';
+import { makeSelectLocation } from 'containers/App/selectors';
 import { changeString } from 'containers/StringFormContainer/actions';
 import { createPost } from 'containers/App/actions';
 import reducer from 'containers/StringFormContainer/reducer';
@@ -26,6 +27,7 @@ export class StringFormContainer extends React.Component {
   render() {
     return (
       <StringForm
+        locationPathname={this.props.location.pathname}
         changeString={this.props.changeString}
         onSubmit={this.props.onSubmit}
         stringInputValue={this.props.stringInputValue}
@@ -38,10 +40,12 @@ StringFormContainer.propTypes = {
   changeString: PropTypes.func,
   onSubmit: PropTypes.func,
   stringInputValue: PropTypes.string,
+  location: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({
   stringInputValue: makeStringValueSelector,
+  location: makeSelectLocation,
 });
 
 function mapDispatchToProps(dispatch) {
