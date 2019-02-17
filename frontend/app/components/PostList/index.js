@@ -15,16 +15,16 @@ import ListWrapper from './ListWrapper';
 /* eslint-disable react/prefer-stateless-function */
 class PostList extends React.Component {
   render() {
-    const stringItems =
-      this.props.posts !== false
-        ? this.props.posts.map(post => (
-            <PostListItem
-              key={post.id}
-              postString={post.string}
-              postTime={new Date(post.created_at)}
-            />
-          ))
-        : null;
+    let stringItems = null;
+    if (this.props.posts !== false) {
+      stringItems = this.props.posts.map(post => (
+        <PostListItem
+          key={post.id}
+          postString={post.string}
+          postTime={new Date(post.created_at)}
+        />
+      ));
+    }
 
     if (this.props.loading === true) {
       return (

@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<StringPageView /> matches snapshot 1`] = `
+<StringPageView__View>
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <title>
+      String Page
+    </title>
+    <meta
+      content="This page shows all the strings!"
+      name="String Page"
+    />
+  </HelmetWrapper>
+  <LoadableComponent />
+  <PostList
+    changeDateTimeFilter={[Function]}
+    filter="ALL_POSTS"
+    loading={false}
+    posts={Array []}
+  />
+</StringPageView__View>
+`;
