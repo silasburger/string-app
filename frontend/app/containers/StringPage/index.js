@@ -17,7 +17,10 @@ import { fetchPosts } from 'containers/App/actions';
 import StringPageView from 'components/StringPageView';
 import { changeDateTimeFilter } from './actions';
 import saga from './saga';
-import { makeDateTimeFilteredPostsSelector } from './selectors';
+import {
+  makeDateTimeFilteredPostsSelector,
+  makeDateTimeFilterSelector,
+} from './selectors';
 import reducer from './reducer';
 
 /* eslint-disable react/prefer-stateless-function */
@@ -41,6 +44,7 @@ export class StringPage extends React.Component {
         <StringPageView
           changeDateTimeFilter={this.props.changeDateTimeFilter}
           posts={this.props.posts}
+          filter={this.props.filter}
         />
       </div>
     );
@@ -53,10 +57,12 @@ StringPage.propTypes = {
   fetchPosts: PropTypes.func,
   changeDateTimeFilter: PropTypes.func,
   loading: PropTypes.bool,
+  filter: PropTypes.string,
 };
 
 const mapStateToProps = createStructuredSelector({
   posts: makeDateTimeFilteredPostsSelector,
+  filter: makeDateTimeFilterSelector,
   loading: makeSelectLoading,
   error: makeSelectError,
 });

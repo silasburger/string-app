@@ -30,6 +30,7 @@ class PostList extends React.Component {
       <ListWrapper>
         <TimeFilterForm
           changeDateTimeFilter={this.props.changeDateTimeFilter}
+          filter={this.props.filter}
         />
         <div>{stringItems}</div>
       </ListWrapper>
@@ -40,6 +41,7 @@ class PostList extends React.Component {
 PostList.propTypes = {
   changeDateTimeFilter: PropTypes.func,
   posts: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
+  filter: PropTypes.string,
 };
 
 export default PostList;

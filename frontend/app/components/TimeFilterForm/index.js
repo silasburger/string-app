@@ -16,20 +16,23 @@ class TimeFilterForm extends React.Component {
   render() {
     return (
       <Form>
-        <Fieldset id="timeFilter" onChange={this.props.changeDateTimeFilter}>
+        <Fieldset id="timeFilter">
           <FormGroup>
             <input
-              defaultChecked
-              id="All_POSTS"
+              onChange={this.props.changeDateTimeFilter}
+              checked={this.props.filter === 'ALL_POSTS'}
+              id="ALL_POSTS"
               type="radio"
-              value="All_POSTS"
+              value="ALL_POSTS"
               name="timeFilter"
             />
-            <Label htmlFor="All_POSTS">All Posts</Label>
+            <Label htmlFor="ALL_POSTS">All Posts</Label>
           </FormGroup>
 
           <FormGroup>
             <input
+              onChange={this.props.changeDateTimeFilter}
+              checked={this.props.filter === 'LAST_FIVE_MINUTES'}
               id="LAST_FIVE_MINUTES"
               type="radio"
               value="LAST_FIVE_MINUTES"
@@ -40,6 +43,8 @@ class TimeFilterForm extends React.Component {
 
           <FormGroup>
             <input
+              onChange={this.props.changeDateTimeFilter}
+              checked={this.props.filter === 'LAST_TWO_WEEKS'}
               id="LAST_TWO_WEEKS"
               type="radio"
               value="LAST_TWO_WEEKS"
@@ -49,6 +54,8 @@ class TimeFilterForm extends React.Component {
           </FormGroup>
           <FormGroup>
             <input
+              onChange={this.props.changeDateTimeFilter}
+              checked={this.props.filter === 'ONE_YEAR_OR_EARLIER'}
               id="ONE_YEAR_OR_EARLIER"
               type="radio"
               value="ONE_YEAR_OR_EARLIER"
@@ -56,9 +63,10 @@ class TimeFilterForm extends React.Component {
             />
             <Label htmlFor="ONE_YEAR_OR_EARLIER">1 Year or Earlier</Label>
           </FormGroup>
-
           <FormGroup>
             <input
+              onChange={this.props.changeDateTimeFilter}
+              checked={this.props.filter === 'FIVE_YEARS_OR_EARLIER'}
               id="FIVE_YEARS_OR_EARLIER"
               type="radio"
               value="FIVE_YEARS_OR_EARLIER"
@@ -74,6 +82,7 @@ class TimeFilterForm extends React.Component {
 
 TimeFilterForm.propTypes = {
   changeDateTimeFilter: PropTypes.func,
+  filter: PropTypes.string,
 };
 
 export default TimeFilterForm;

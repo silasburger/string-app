@@ -34,6 +34,7 @@ class StringPageView extends React.Component {
         <PostList
           changeDateTimeFilter={this.props.changeDateTimeFilter}
           posts={this.props.posts}
+          filter={this.props.filter}
         />
       </View>
     );
@@ -43,6 +44,7 @@ class StringPageView extends React.Component {
 StringPageView.propTypes = {
   posts: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
   changeDateTimeFilter: PropTypes.func,
+  filter: PropTypes.string,
 };
 
 export default StringPageView;
