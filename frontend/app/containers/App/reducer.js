@@ -33,7 +33,6 @@ function appReducer(state = initialState, action) {
     case FETCH_POSTS:
       return state.set('loading', true).set('error', false);
     case POSTS_RECEIVED:
-      console.log('posts received triggered');
       return state
         .set('loading', false)
         .set('error', false)

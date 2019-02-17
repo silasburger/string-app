@@ -8,7 +8,6 @@ export const initialState = fromJS({
 });
 
 function stringPageReducer(state = initialState, action) {
-  console.log('in reducer', state);
   switch (action.type) {
     case CHANGE_DATE_TIME_FILTER:
       return state.set('dateTimeFilter', action.filter);

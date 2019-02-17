@@ -26,8 +26,6 @@ const makeDateTimeFilterSelector = createSelector(
 const makeDateTimeFilteredPostsSelector = createSelector(
   [makeDateTimeFilterSelector, makeSelectPosts],
   (dateTimeFilter, posts) => {
-    console.log('makvetimedate selector run', posts);
-    console.log('ok here', dateTimeFilter);
     const currentTime = new Date();
     switch (dateTimeFilter) {
       case LAST_FIVE_MINUTES:
@@ -51,7 +49,6 @@ const makeDateTimeFilteredPostsSelector = createSelector(
           return currentTime - creationDate > 1000 * 60 * 60 * 24 * 365 * 5;
         });
       default:
-        console.log('default run');
         return posts;
     }
   },
