@@ -33,18 +33,18 @@ describe('fetchPosts Saga', () => {
   });
 
   it('should call the api', () => {
-    const generator = fetchPosts();
+    const newGenerator = fetchPosts();
 
-    const callDescr = generator.next().value;
+    const callDescr = newGenerator.next().value;
     expect(callDescr).toEqual(call(BackendAPI.getAllPosts));
   });
 
   it('should dispatch the postsReceived action if it requests the data successfully', () => {
-    const response = [
-      { string: 'onepost', created_at: '2019-02-16 19:10:25-07' },
-    ];
+    const response = {
+      posts: [{ string: 'onepost', created_at: '2019-02-16 19:10:25-07' }],
+    };
     const putDescriptor = fetchPostsGenerator.next(response).value;
-    expect(putDescriptor).toEqual(put(postsReceived(response)));
+    expect(putDescriptor).toEqual(put(postsReceived(response.posts)));
   });
 
   it('should call the fetchPostsFailed action if the response errors', () => {

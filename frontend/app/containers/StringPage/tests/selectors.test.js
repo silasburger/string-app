@@ -33,15 +33,22 @@ describe('makeDateTimeFilterSelector', () => {
 describe('makeDateTimeFilteredPostsSelector', () => {
   const posts = [
     {
+      id: 1,
       string: '😺 😸 😹 😻 😼 😽 🙀 😿 😾',
       created_at: '1992-06-22 19:10:25-07',
     },
-    { string: 'Strings and strands', created_at: '2017-06-22 19:10:25-07' },
     {
+      id: 2,
+      string: 'Strings and strands',
+      created_at: '2017-06-22 19:10:25-07',
+    },
+    {
+      id: 3,
       string: '😺 😸 😹 😻 😼 😽 🙀 😿 😾',
       created_at: '2019-02-16 19:10:25-07',
     },
     {
+      id: 4,
       string: '😺 😸 😹 😻 😼 😽 🙀 😿 😾',
       created_at: '2050-06-30 19:10:25-07',
     },
@@ -52,11 +59,17 @@ describe('makeDateTimeFilteredPostsSelector', () => {
       posts,
     );
   });
-  it('should return new posts', () => {
-    const filter = 'LAST_FIVE_MINUTES';
+  it('should return newish posts', () => {
+    const filter = 'LAST_TWO_WEEKS';
     expect(makeDateTimeFilteredPostsSelector.resultFunc(filter, posts)).toEqual(
       [
         {
+          id: 3,
+          string: '😺 😸 😹 😻 😼 😽 🙀 😿 😾',
+          created_at: '2019-02-16 19:10:25-07',
+        },
+        {
+          id: 4,
           string: '😺 😸 😹 😻 😼 😽 🙀 😿 😾',
           created_at: '2050-06-30 19:10:25-07',
         },
@@ -68,6 +81,7 @@ describe('makeDateTimeFilteredPostsSelector', () => {
     expect(makeDateTimeFilteredPostsSelector.resultFunc(filter, posts)).toEqual(
       [
         {
+          id: 4,
           string: '😺 😸 😹 😻 😼 😽 🙀 😿 😾',
           created_at: '2050-06-30 19:10:25-07',
         },
@@ -79,10 +93,15 @@ describe('makeDateTimeFilteredPostsSelector', () => {
     expect(makeDateTimeFilteredPostsSelector.resultFunc(filter, posts)).toEqual(
       [
         {
+          id: 1,
           string: '😺 😸 😹 😻 😼 😽 🙀 😿 😾',
           created_at: '1992-06-22 19:10:25-07',
         },
-        { string: 'Strings and strands', created_at: '2017-06-22 19:10:25-07' },
+        {
+          id: 2,
+          string: 'Strings and strands',
+          created_at: '2017-06-22 19:10:25-07',
+        },
       ],
     );
   });
@@ -91,6 +110,7 @@ describe('makeDateTimeFilteredPostsSelector', () => {
     expect(makeDateTimeFilteredPostsSelector.resultFunc(filter, posts)).toEqual(
       [
         {
+          id: 1,
           string: '😺 😸 😹 😻 😼 😽 🙀 😿 😾',
           created_at: '1992-06-22 19:10:25-07',
         },
