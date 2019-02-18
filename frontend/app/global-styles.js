@@ -44,8 +44,12 @@ const GlobalStyle = createGlobalStyle`
   }
 
   #string-page {
+    width: 100%;
     height: 100%;
     display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
   }
 
 `;

@@ -31,15 +31,13 @@ export class StringPage extends React.Component {
 
   render() {
     return (
-      <div id="string-page">
-        <StringPageView
-          error={this.props.error}
-          loading={this.props.loading}
-          changeDateTimeFilter={this.props.changeDateTimeFilter}
-          posts={this.props.posts}
-          filter={this.props.filter}
-        />
-      </div>
+      <StringPageView
+        error={this.props.error}
+        loading={this.props.loading}
+        changeDateTimeFilter={this.props.changeDateTimeFilter}
+        posts={this.props.posts}
+        filter={this.props.filter}
+      />
     );
   }
 }

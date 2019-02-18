@@ -1,14 +1,13 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
 
-import StringPageView from 'components/StringPageView/';
 import { fetchPosts } from 'containers/App/actions';
 import { changeDateTimeFilter } from '../actions';
 import { StringPage, mapDispatchToProps } from '../index';
 
 describe('<StringPage />', () => {
-  it('should render the string page view', () => {
-    const renderedComponent = shallow(
+  it('string page snapshot', () => {
+    const wrapper = shallow(
       <StringPage
         loading={false}
         error={false}
@@ -17,18 +16,8 @@ describe('<StringPage />', () => {
         changeDateTimeFilter={() => {}}
         fetchPosts={() => {}}
       />,
-    );
-    expect(
-      renderedComponent.contains(
-        <StringPageView
-          loading={false}
-          error={false}
-          posts={[]}
-          filter="ALL_POSTS"
-          changeDateTimeFilter={() => {}}
-        />,
-      ),
-    ).toEqual(true);
+    ).dive();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('should fetch posts on mount', () => {
@@ -71,7 +60,7 @@ describe('<StringPage />', () => {
       it('should dispatch change when called', () => {
         const dispatch = jest.fn();
         const result = mapDispatchToProps(dispatch);
-        result.changeDateTimeFilter('ALL_POSTS');
+        result.changeDateTimeFilter({ target: { value: 'ALL_POSTS' } });
         expect(dispatch).toHaveBeenCalledWith(
           changeDateTimeFilter('ALL_POSTS'),
         );

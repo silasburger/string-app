@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<StringPage /> string page snapshot 1`] = `
+<div
+  id="string-page"
+>
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <title>
+      String Page
+    </title>
+    <meta
+      content="This page shows all the strings!"
+      name="String Page"
+    />
+  </HelmetWrapper>
+  <LoadableComponent />
+  <PostList
+    changeDateTimeFilter={[Function]}
+    filter="ALL_POSTS"
+    loading={false}
+    posts={Array []}
+  />
+</div>
+`;
