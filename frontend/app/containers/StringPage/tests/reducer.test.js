@@ -11,6 +11,6 @@ describe('stringPageReducer', () => {
       undefined,
       changeDateTimeFilter(LAST_FIVE_MINUTES),
     );
-    expect(state.dateTimeFilter).toEqual(LAST_FIVE_MINUTES);
+    expect(state.get('dateTimeFilter')).toEqual(LAST_FIVE_MINUTES);
   });
 });
