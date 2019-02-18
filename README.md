@@ -90,4 +90,4 @@ state: {
 
 ##Key Decsions
 - Keeping the loading and error in global state allows for all containers to have the appropriate state when the app is loading. The alternative is having a loading/error property of each container. For a small application it makes sense to deal with these properties in one place.
-- Attaching sagas to the StringFormContainer meant that sagas related to the form would only be listening for actions when the container was mounted. This is not important in a small application but on a bigger one you would want to limit the number of sagas in affect at any one time by keeping them attached to the container that relies on them.
+- Attaching sagas to the StringFormContainer meant that sagas related to the form would only be listening for actions when the container was mounted. This is not important in a small application but on a bigger one you would want to limit the number of sagas in affect at any one time by keeping them attached to the container(s) that relie on them.
