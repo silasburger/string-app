@@ -23,6 +23,13 @@ const makeDateTimeFilterSelector = createSelector(
   substate => substate.get('dateTimeFilter'),
 );
 
+/**
+ * This is a COOL selector!
+ * This selector finds the time between the current date/time and the date/time of each post.
+ * Depending on the date/time filter different posts are selected.
+ * When two Dates are substracted the difference is returned in miliseconds,
+ * so there are calculations for different in miliseconds.
+ */
 const makeDateTimeFilteredPostsSelector = createSelector(
   [makeDateTimeFilterSelector, makeSelectPosts],
   (dateTimeFilter, posts) => {

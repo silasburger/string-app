@@ -21,6 +21,12 @@ import saga from 'containers/StringFormContainer/saga';
 import ErrorAlert from 'components/ErrorAlert';
 import StringForm from 'components/StringForm';
 
+/**
+ * This container renders a controlled string input.
+ * Errors are rendered here as well.
+ * Disconnect the backend and give it a try!
+ */
+
 /* eslint-disable react/prefer-stateless-function */
 export class StringFormContainer extends React.Component {
   render() {

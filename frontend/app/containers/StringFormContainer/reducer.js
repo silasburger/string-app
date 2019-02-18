@@ -12,6 +12,10 @@ export const initialState = fromJS({
   stringInputValue: '',
 });
 
+/**
+ * POST_CREATED is listened for here as well as in App reducer
+ * Here, the form input value is cleared in the redux state when a post is created
+ */
 function stringFormContainerReducer(state = initialState, action) {
   switch (action.type) {
     case CHANGE_STRING:

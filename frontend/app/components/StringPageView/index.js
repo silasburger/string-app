@@ -12,6 +12,11 @@ import PostList from 'components/PostList';
 import StringFormContainer from 'containers/StringFormContainer/Loadable';
 import ErrorAlert from 'components/ErrorAlert';
 
+/**
+ * Errors are rendered in the component when they're present.
+ * Disconnect the backend and give it a try.
+ */
+
 /* eslint-disable react/prefer-stateless-function */
 export class StringPageView extends React.Component {
   render() {

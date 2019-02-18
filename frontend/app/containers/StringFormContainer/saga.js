@@ -18,7 +18,7 @@ import { CREATE_POST, POST_CREATED } from 'containers/App/constants';
 import { makeSelectLocation } from '../App/selectors';
 
 /**
- *
+ * CREATE_POST request and response handler
  */
 export function* loadCreatePost() {
   const string = yield select(makeStringValueSelector);
@@ -32,8 +32,8 @@ export function* loadCreatePost() {
 }
 
 /**
- * Push to /strings when post is created
- * Calling push on main history instance to navigate to strings page
+ * Pushes to /strings when post is created if user isn't already on /strings.
+ * If user is on /strings, then a new request is triggered.
  */
 export function* postCreatedSideEffects() {
   const location = yield select(makeSelectLocation);
@@ -44,10 +44,16 @@ export function* postCreatedSideEffects() {
   }
 }
 
+/**
+ * Watches for a CREATE_POST action to be dispatched, then calls loadCreatePost handler
+ */
 export function* watchCreatePost() {
   yield takeEvery(CREATE_POST, loadCreatePost);
 }
 
+/**
+ * Watches for a POST_CREATED action to be dispatched, then calls loadCreatePost handler
+ */
 export function* watchPostCreated() {
   yield takeLatest(POST_CREATED, postCreatedSideEffects);
 }

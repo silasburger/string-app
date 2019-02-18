@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+/**
+ * Condition rendering is used here to make the background of the filter selector red when it is in 
+ * effect.
+ */
 export default styled.div`
   display: inline-block;
   background-color: #41addd;
